@@ -4,11 +4,22 @@ const PLM = require('passport-local-mongoose');
 const userSchema = new Schema(
   {
     email: String,
-    name: String
+    name: String,
+    lastName: String,
+    isLoggedIn: {
+      type: Boolean,
+      default: false,
+    },
+    enrolledSubjects: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Subject',
+      },
+    ],
   },
   {
     timestamps: true,
-    versionKey: false
+    versionKey: false,
   }
 );
 
